@@ -29,35 +29,15 @@ php artisan vendor:publish --tag=fathom-settings-migrations
 php artisan migrate
 ```
 
-Optionally, publish the config file to customize default values used when seeding settings:
-
-```bash
-php artisan vendor:publish --tag=fathom-config
-```
-
 ## Configuration
 
-Set your Fathom Site ID in your `.env` file (used as the default seed value):
+Set your Fathom Site ID in your `.env` file (used as the initial seed value during migration):
 
 ```env
 FATHOM_SITE=YOUR_SITE_ID
 ```
 
-The config file (`config/fathom.php`) defines the default values that seed the database settings on first migration:
-
-```php
-return [
-    'defaults' => [
-        'website_id' => env('FATHOM_SITE'),
-        'canonical' => true,
-        'auto' => true,
-        'spa' => null,       // 'auto', 'history', 'hash', or null
-        'honor_dnt' => null,  // true, false, or null
-    ],
-];
-```
-
-Once migrated, all settings are managed from the database. You can update them programmatically:
+Once migrated, all settings are managed exclusively from the database. You can update them programmatically:
 
 ```php
 use JeffersonGoncalves\Fathom\Settings\FathomSettings;
