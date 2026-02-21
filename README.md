@@ -31,13 +31,7 @@ php artisan migrate
 
 ## Configuration
 
-Set your Fathom Site ID in your `.env` file (used as the initial seed value during migration):
-
-```env
-FATHOM_SITE=YOUR_SITE_ID
-```
-
-Once migrated, all settings are managed exclusively from the database. You can update them programmatically:
+All settings are managed exclusively from the database after running the migration. You can update them programmatically:
 
 ```php
 use JeffersonGoncalves\Fathom\Settings\FathomSettings;
