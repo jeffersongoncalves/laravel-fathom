@@ -54,10 +54,10 @@ class TestCase extends Orchestra
     {
         $migrator = app(SettingsMigrator::class);
 
-        $migrator->add('fathom.website_id', config('fathom.defaults.website_id', config('fathom.website_id')));
-        $migrator->add('fathom.canonical', config('fathom.defaults.canonical', config('fathom.canonical', true)));
-        $migrator->add('fathom.auto', config('fathom.defaults.auto', config('fathom.auto', true)));
-        $migrator->add('fathom.spa', config('fathom.defaults.spa', config('fathom.spa')));
-        $migrator->add('fathom.honor_dnt', config('fathom.defaults.honor_dnt', config('fathom.honor_dnt')));
+        $migrator->add('fathom.website_id', null);
+        $migrator->add('fathom.canonical', true);
+        $migrator->add('fathom.auto', true);
+        $migrator->add('fathom.spa', null);
+        $migrator->add('fathom.honor_dnt', null);
     }
 }

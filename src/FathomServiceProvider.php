@@ -12,7 +12,6 @@ class FathomServiceProvider extends PackageServiceProvider
     public function configurePackage(Package $package): void
     {
         $package->name('laravel-fathom')
-            ->hasConfigFile('fathom')
             ->hasViews();
     }
 
