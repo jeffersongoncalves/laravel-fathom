@@ -12,6 +12,8 @@
 
 This Laravel package seamlessly integrates Fathom analytics into your Blade templates. Easily track website visits and user engagement directly within your Laravel application, providing valuable insights into your website's performance. This package simplifies the integration process, saving you time and effort. With minimal configuration, you can leverage Fathom's powerful analytics features to gain a clearer understanding of your audience and website usage.
 
+Settings are stored in the database using [spatie/laravel-settings](https://github.com/spatie/laravel-settings), allowing you to manage them dynamically (e.g., via an admin panel) without relying on `.env` files.
+
 ## Installation
 
 You can install the package via composer:
@@ -20,15 +22,71 @@ You can install the package via composer:
 composer require jeffersongoncalves/laravel-fathom
 ```
 
-## Usage
+Publish and run the settings migration:
 
-Publish config file.
+```bash
+php artisan vendor:publish --tag=fathom-settings-migrations
+php artisan migrate
+```
+
+Optionally, publish the config file to customize default values used when seeding settings:
 
 ```bash
 php artisan vendor:publish --tag=fathom-config
 ```
 
-Add head template.
+## Configuration
+
+Set your Fathom Site ID in your `.env` file (used as the default seed value):
+
+```env
+FATHOM_SITE=YOUR_SITE_ID
+```
+
+The config file (`config/fathom.php`) defines the default values that seed the database settings on first migration:
+
+```php
+return [
+    'defaults' => [
+        'website_id' => env('FATHOM_SITE'),
+        'canonical' => true,
+        'auto' => true,
+        'spa' => null,       // 'auto', 'history', 'hash', or null
+        'honor_dnt' => null,  // true, false, or null
+    ],
+];
+```
+
+Once migrated, all settings are managed from the database. You can update them programmatically:
+
+```php
+use JeffersonGoncalves\Fathom\Settings\FathomSettings;
+
+$settings = app(FathomSettings::class);
+$settings->website_id = 'NEW_SITE_ID';
+$settings->spa = 'history';
+$settings->save();
+```
+
+Or use the helper function:
+
+```php
+$settings = fathom_settings();
+$settings->website_id = 'NEW_SITE_ID';
+$settings->save();
+```
+
+Or use the Facade:
+
+```php
+use JeffersonGoncalves\Fathom\Facades\Fathom;
+
+$websiteId = Fathom::website_id;
+```
+
+## Usage
+
+Add the Fathom script to your Blade layout (typically in `<head>`):
 
 ```php
 @include('fathom::script')
@@ -54,7 +112,7 @@ Please review [our security policy](../../security/policy) on how to report secu
 
 ## Credits
 
-- [Jèfferson Gonçalves](https://github.com/jeffersongoncalves)
+- [Jefferson Goncalves](https://github.com/jeffersongoncalves)
 - [All Contributors](../../contributors)
 
 ## License
