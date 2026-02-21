@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file.
 
+## 3.0.0 - 2026-02-20
+
+### Breaking Changes
+
+- Removed `config/fathom.php` — the config file no longer exists and is not publishable
+- Removed `->hasConfigFile()` from `FathomServiceProvider`
+
+### What changed
+
+All settings are now managed exclusively through the database via **spatie/laravel-settings**. There is no longer a config file to publish or customize.
+
+The settings migration seeds initial values using `env('FATHOM_SITE')` for `website_id` and hardcoded defaults for the remaining settings (`canonical: true`, `auto: true`, `spa: null`, `honor_dnt: null`).
+
+### Upgrading from 2.x
+
+If you previously published `config/fathom.php`, you can safely delete it. All configuration must now be managed through the `settings` table via `FathomSettings`.
+
 ## 2.0.0 - 2026-02-20
 
 ### What's Changed
