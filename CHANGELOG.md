@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## 3.0.1 - 2026-02-24
+
+### What's Changed
+
+- Add Laravel 13.x support in composer.json
+- Add orchestra/testbench ^11.0 for Laravel 13 testing
+
 ## 3.0.0 - 2026-02-20
 
 ### Breaking Changes
