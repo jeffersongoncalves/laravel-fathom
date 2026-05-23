@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## 3.0.2 - 2026-04-26
+
+### What's Changed
+
+* build(deps): bump ramsey/composer-install from 3 to 4 by @dependabot[bot] in https://github.com/jeffersongoncalves/laravel-fathom/pull/12
+* build(deps): bump dependabot/fetch-metadata from 2.5.0 to 3.0.0 by @dependabot[bot] in https://github.com/jeffersongoncalves/laravel-fathom/pull/13
+
+**Full Changelog**: https://github.com/jeffersongoncalves/laravel-fathom/compare/3.0.1...3.0.2
+
 ## 3.0.1 - 2026-02-24
 
 ### What's Changed
