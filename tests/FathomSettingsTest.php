@@ -1,5 +1,6 @@
 <?php
 
+use JeffersonGoncalves\Fathom\Facades\Fathom;
 use JeffersonGoncalves\Fathom\Settings\FathomSettings;
 
 it('can resolve FathomSettings from the container', function () {
@@ -44,4 +45,16 @@ it('can be accessed via the helper function', function () {
     $settings = fathom_settings();
 
     expect($settings)->toBeInstanceOf(FathomSettings::class);
+});
+
+it('resolves the underlying settings via the Facade', function () {
+    expect(Fathom::getFacadeRoot())->toBeInstanceOf(FathomSettings::class);
+});
+
+it('reads a persisted value through the Facade', function () {
+    $settings = app(FathomSettings::class);
+    $settings->website_id = 'FACADEID';
+    $settings->save();
+
+    expect(Fathom::getFacadeRoot()->website_id)->toBe('FACADEID');
 });

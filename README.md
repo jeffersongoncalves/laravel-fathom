@@ -50,13 +50,29 @@ $settings->website_id = 'NEW_SITE_ID';
 $settings->save();
 ```
 
-Or use the Facade:
+Or use the Facade. The facade resolves the underlying `FathomSettings` instance, so read or write properties through `getFacadeRoot()`:
 
 ```php
 use JeffersonGoncalves\Fathom\Facades\Fathom;
 
-$websiteId = Fathom::website_id;
+// Read a value
+$websiteId = Fathom::getFacadeRoot()->website_id;
+
+// Update and persist
+$settings = Fathom::getFacadeRoot();
+$settings->website_id = 'NEW_SITE_ID';
+$settings->save();
 ```
+
+### Available settings
+
+| Setting | Type | Default | Description |
+|---------|------|---------|-------------|
+| `website_id` | `?string` | `null` | Your Fathom site ID. The script only renders when this is set. |
+| `canonical` | `bool` | `true` | When `false`, sends `data-canonical="false"` to ignore canonical URLs. |
+| `auto` | `bool` | `true` | Controls `data-auto-track` (automatic pageview tracking). |
+| `spa` | `?string` | `null` | SPA tracking mode (e.g. `history`, `hash`, `auto`). |
+| `honor_dnt` | `?bool` | `null` | When truthy, sends `data-honor-dnt="true"` to respect Do Not Track. |
 
 ## Usage
 
