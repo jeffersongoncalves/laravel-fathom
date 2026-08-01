@@ -32,8 +32,8 @@ class FathomServiceProvider extends PackageServiceProvider
         $settingsMigrationsPath = __DIR__.'/../database/settings';
 
         Config::set('settings.migrations_paths', array_merge(
-            Config::get('settings.migrations_paths', []),
-            [$settingsMigrationsPath]
+            [$settingsMigrationsPath],
+            Config::get('settings.migrations_paths', [])
         ));
 
         $this->publishes([
