@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## 3.0.4 - 2026-08-01
+
+### What's Changed
+
+* build(deps): bump actions/checkout from 6 to 7 by @dependabot[bot] in https://github.com/jeffersongoncalves/laravel-fathom/pull/14
+* build(deps): bump actions/checkout from 6 to 7 by @dependabot[bot] in https://github.com/jeffersongoncalves/laravel-fathom/pull/15
+
+**Full Changelog**: https://github.com/jeffersongoncalves/laravel-fathom/compare/3.0.3...3.0.4
+
 ## 3.0.2 - 2026-04-26
 
 ### What's Changed
